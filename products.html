@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products</title>
+   <style>
+.parallax-footer{
+  position: relative;
+
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
+    url("./assets/images/parallex.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+html, body{
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+/* Remove Bootstrap blue completely */
+.nav-pills .nav-link {
+  color: #ffc107;
+  border: 1px solid #ffc107;
+  background-color: transparent;
+}
+
+/* Active button = yellow box + black text */
+.nav-pills .nav-link.active {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+  border-color: #ffc107 !important;
+}
+
+/* Remove blue focus shadow */
+.nav-pills .nav-link:focus {
+  box-shadow: none !important;
+}
+
+/* Optional hover (keeps theme consistent) */
+.nav-pills .nav-link:hover {
+  background-color: #ffc107;
+  color: #000;
+}
+    </style>
+    <a href="https://api.whatsapp.com/send?phone=918590568859&text=Hello%20Royal%20Feast"
+   class="btn btn-success position-fixed bottom-0 end-0 m-4 rounded-circle shadow d-flex align-items-center justify-content-center"
+   style="width:65px;height:65px;z-index:1050;"
+   target="_blank">
+
+   <i class="bi bi-whatsapp text-white fs-3"></i>
+
+</a>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+    <!-- start navbar -->
+   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+        <img src="./assets/images/foodoglogo.jpg" alt="..." width="70" height="60">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">About</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Products</a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#offers">Offers</a>
+        </li>
+         <li class="nav-item">
+         <a class="nav-link active" href="#contact">Contact Us</a>
+        </li>
+      </ul>
+      <button class="btn btn-warning ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+  Login
+</button>
+    </div>
+  </div>
+</div><div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-light border border-warning">
+
+      <div class="modal-header border-warning">
+        <h5 class="modal-title text-warning">Login to Your Account</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Enter email">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Enter password">
+          </div>
+
+          <button class="btn btn-warning w-100">Login</button>
+        </form>
+      </div>
+
+      <div class="modal-footer border-warning">
+        <small class="text-secondary">New user? Register here</small>
+      </div>
+
+    </div>
+  </div>
+</div>
+  
+
+  </div>
+</div>
+    </div>
+  </div>
+</nav>
+<!-- end navbar  -->
+ <div class="container my-5">
+  <div id="aboutBannerCarousel" class="carousel slide carousel-fade rounded-4 overflow-hidden shadow" data-bs-ride="carousel">
+
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#aboutBannerCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#aboutBannerCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#aboutBannerCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- Slides -->
+     <!-- Sliding Banner under navbar -->
+<div id="offers" class="container-fluid my-5 px-0">
+  <div id="aboutBannerCarousel" class="carousel slide carousel-fade rounded-4 overflow-hidden shadow" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <img src="./assets/images/offers1.jpg" class="d-block w-100" style="height:820px; object-fit:cover;" alt="">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+          <h3>Fresh Ingredients</h3>
+          <p>We use only the finest ingredients for every dish.</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img src="./assets/images/offersr1.jpg" class="d-block w-100" style="height:820px; object-fit:cover;" alt="">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+          <h3>Cozy Dining Experience</h3>
+          <p>Enjoy a comfortable and welcoming atmosphere.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <img src="./assets/images/of2.jpg" class="d-block w-100" style="height:820px; object-fit:cover;" alt="">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+          <h3>Delicious Variety</h3>
+          <p>From burgers to broast — taste the difference.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#aboutBannerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#aboutBannerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+  </div>
+</div>
+
+<div class="container py-5">
+  <h2 class="text-center text-warning mb-5">OUR FULL MENU</h2>
+
+  <!-- Filter Buttons -->
+  <ul class="nav nav-pills justify-content-center mb-4 gap-2" id="menuTabs" role="tablist">
+    <li class="nav-item">
+      <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#all" type="button">All</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#veg" type="button">Veg</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#nonveg" type="button">Non-Veg</button>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content">
+
+    <!-- ALL TAB -->
+    <div class="tab-pane fade show active" id="all">
+      <div class="row g-4">
+        <!-- Burger -->
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/foodcard1.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Burger</h5>
+              <p>Juicy grilled burger with fresh toppings.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Burger" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+ </div>
+    </div>
+        </div>
+        <!-- Pizza -->
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/foodcard2.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Pizza</h5>
+              <p>Cheesy oven baked pizza with rich flavors.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Pizza" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <!-- Masala Dosa -->
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/veg1.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Masala Dosa</h5>
+              <p>Crispy rice crepe filled with spiced potatoes.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Masala Dosa" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <!-- Idli -->
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/veg2.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Idli</h5>
+              <p>Soft steamed fermented South Indian cakes.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Idli" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <!-- Broast -->
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/foodcard3.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Broast</h5>
+              <p>Crispy juicy pressure-fried chicken pieces.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Broast" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <!-- Loaded Fries -->
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/foodcard5.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Loaded Fries</h5>
+              <p>Cheesy fries topped with flavorful sauces.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Loaded Fries" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <!-- Vada -->
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/veg3.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Vada</h5>
+              <p>Crispy deep-fried savory South Indian snack.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Vada" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <!-- Puri -->
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/veg4.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Puri</h5>
+              <p>Soft, fluffy deep-fried Indian bread served hot.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Puri" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VEG TAB -->
+    <div class="tab-pane fade" id="veg">
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/veg1.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Masala Dosa</h5>
+              <p>Crispy rice crepe filled with spiced potatoes.</p>
+           <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Masala Dosa" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/veg2.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Idli</h5>
+              <p>Soft steamed fermented South Indian cakes.</p>
+             <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Idli" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/veg3.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Vada</h5>
+              <p>Crispy deep-fried savory South Indian snack.</p>
+            <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Vada" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/veg4.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Puri</h5>
+              <p>Soft, fluffy deep-fried Indian bread served hot.</p>
+             <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Puri" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NON-VEG TAB -->
+    <div class="tab-pane fade" id="nonveg">
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/foodcard3.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Broast</h5>
+              <p>Crispy juicy pressure-fried chicken pieces.</p>
+             <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Broast" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/foodcard5.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Loaded Fries</h5>
+              <p>Cheesy fries topped with flavorful sauces.</p>
+             <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Loaded Fries" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/foodcard1.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Burger</h5>
+              <p>Juicy grilled burger with fresh toppings.</p>
+             <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Burger" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <img src="./assets/images/foodcard2.jpg" class="card-img-top">
+            <div class="card-body text-center">
+              <h5>Pizza</h5>
+              <p>Cheesy oven baked pizza with rich flavors.</p>
+             <a href="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Pizza" 
+   class="btn btn-warning text-dark fw-semibold">
+   Order Now
+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<footer id="contact" class="text-light pt-5 pb-4 position-relative parallax-footer">
+
+  <div class="container-fluid px-0">
+
+    <div class="row g-4 p-4 mx-0">
+      <!-- About -->
+      <div class="col-md-4">
+        <h4 class="text-warning">Royal Feast</h4>
+        <div class="border-bottom border-warning mb-3" style="width:60px;"></div>
+
+        <p class="medium">
+          A destination for refined dining, where every dish is crafted with premium ingredients and exceptional hospitality.
+We blend traditional flavors with modern presentation to create meals that delight both the palate and the senses.
+From casual lunches to special celebrations, our warm atmosphere and attentive service ensure every visit feels memorable.
+At Royal Feast, we don’t just serve food — we create experiences worth returning for.
+        </p>
+
+        <a href="#" class="btn btn-warning btn-sm mt-2 px-4">Reserve a Table</a>
+      </div>
+
+     <!-- Hours + Contact -->
+<div class="col-md-4 text-center d-flex flex-column align-items-center">
+  <h5 class="text-warning">Opening Hours</h5>
+  <div class="border-bottom border-warning mb-3" style="width:60px;"></div>
+
+  <p class="small mb-1">Mon – Fri: 11:00 AM – 10:30 PM</p>
+  <p class="small mb-1">Saturday: 11:00 AM – 11:30 PM</p>
+  <p class="small">Sunday: 12:00 PM – 10:30 PM</p>
+
+  <h6 class="text-warning mt-3">Contact</h6>
+  <p class="small mb-1">📍 Calicut, Kerala</p>
+  <p class="small mb-1">📞 +91 98765 43210</p>
+  <p class="small">✉ info@royalfeast.com</p>
+</div>
+
+      <!-- Map + Social -->
+      <div class="col-md-4 text-md-end">
+        <h5 class="text-warning">Find Us</h5>
+        <div class="border-bottom border-warning mb-3 ms-md-auto" style="width:60px;"></div>
+
+        <div class="ratio ratio-4x3 mb-3 rounded overflow-hidden border border-warning">
+          <iframe src="https://maps.google.com/maps?q=calicut&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <a href="#" class="btn btn-outline-warning btn-sm rounded-circle me-2">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <a href="#" class="btn btn-outline-warning btn-sm rounded-circle me-2">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="#" class="btn btn-outline-warning btn-sm rounded-circle">
+          <i class="bi bi-whatsapp"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <hr class="border-warning opacity-50 mt-4">
+
+    <div class="text-center small fst-italic">
+      © 2026 Royal Feast — Where Taste Meets Elegance
+    </div>
+  </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

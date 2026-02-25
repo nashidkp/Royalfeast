@@ -28,11 +28,6 @@
 body{
   padding-top: var(--nav-height);
 }
-.carousel,
-#hero,
-.slider-section {
-  margin-top: 80px; /* same as navbar height */
-}
       /* Parallax About Section */
 .parallax-about {
   position: relative;
@@ -104,22 +99,13 @@ html, body{
 #carouselExampleAutoplaying,
 #carouselExampleAutoplaying .carousel-inner,
 #carouselExampleAutoplaying .carousel-item{
-  height: 100vh;
+  height: calc(100vh - var(--nav-height)); /* full screen minus navbar */
 }
 
 #carouselExampleAutoplaying img{
-  height: 100vh;
-  object-fit: cover;
-}
-/* Full screen hero carousel */
-.carousel-item {
-  min-height: 400px;
-}
-
-.carousel-item img {
   height: 100%;
   width: 100%;
-  object-fit: cover; /* prevents stretching */
+  object-fit: cover;
 }
 
 /* Optional dark overlay for text readability */
@@ -178,7 +164,7 @@ html, body{
 <!-- start navbar -->
    <nav class="navbar navbar-expand-lg fixed-top glass-navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#home">
         <img src="./assets/images/foodoglogo.jpg" alt="..." width="70" height="60">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -190,17 +176,16 @@ html, body{
           <a class="nav-link active" aria-current="page" href="#home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#about">About Us</a>
+          <a class="nav-link" href="#about">About Us</a>
         </li>
-         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#products">Products</a>
-        </li>
-       
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#offers">Offers</a>
+          <a class="nav-link" href="#products">Products</a>
         </li>
-         <li class="nav-item">
-         <a class="nav-link active" href="#contact">Contact Us</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#offers">Offers</a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="#contact">Contact Us</a>
         </li>
       </ul>
       <button class="btn btn-warning ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
@@ -568,7 +553,13 @@ html, body{
         <h5 class="text-warning footer-title">Royal Feast</h5>
         <div class="divider mx-md-0 mx-auto"></div>
         <p>Premium dining with quality food, warm services, and a memorable atmosphere.</p>
-        <a href="#" class="btn btn-warning btn-sm mt-2">Reserve Table</a>
+        <a
+          href="https://api.whatsapp.com/send?phone=918590568859&text=Hi%20Royal%20Feast,%20I%20would%20like%20to%20reserve%20a%20table"
+          target="_blank"
+          class="btn btn-warning btn-sm mt-2"
+        >
+          Reserve Table
+        </a>
       </div>
 
       <!-- Column 2 -->

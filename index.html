@@ -433,103 +433,104 @@
       </div>
     </div>
   </nav>
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-light">
-
-        <div class="modal-header border-warning">
-          <div class="d-flex align-items-center">
-            <img src="./assets/images/foodoglogo.jpg" alt="Royal Feast Logo" style="width:40px;height:40px;border-radius:999px;object-fit:cover;
-                      border:1px solid var(--rf-premium-soft);margin-right:10px;">
-            <div>
-              <h5 class="modal-title text-warning mb-0">Login to Your Account</h5>
-              <small class="text-secondary">Welcome back to Royal Feast</small>
+  <!-- Unified Authentication Modal (Redesigned) -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content auth-modal-content overflow-hidden">
+        <div class="row g-0">
+          <!-- Visual Panel -->
+          <div class="col-lg-6 d-none d-lg-block modal-split-visual"
+            style="background-image: url('./assets/images/royal_feast_login_bg.png');">
+            <div class="visual-overlay d-flex flex-column justify-content-end p-5">
+              <h2 class="display-5 fw-bold text-white mb-3 head-royal">A Taste of Royalty</h2>
+              <p class="text-white-50 lead mb-0">Experience the finest gourmet delights, prepared with passion and
+                served with elegance.</p>
             </div>
           </div>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
 
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" placeholder="Enter email">
+          <!-- Form Panel -->
+          <div class="col-lg-6 modal-split-form p-4 p-md-5 bg-dark">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <img src="./assets/images/foodoglogo.jpg" alt="Logo" class="rounded-circle shadow" width="60">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                aria-label="Close"></button>
             </div>
 
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" placeholder="Enter password">
+            <!-- Login View -->
+            <div id="loginView">
+              <h3 class="head-royal text-warning mb-2">Welcome Back</h3>
+              <p class="text-secondary mb-4">Please enter your details to sign in.</p>
+
+              <form>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Email Address</label>
+                  <input type="email" class="form-control premium-input" placeholder="name@example.com">
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label small text-uppercase fw-bold text-secondary">Password</label>
+                    <a href="#" class="small text-warning text-decoration-none">Forgot?</a>
+                  </div>
+                  <input type="password" class="form-control premium-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-warning w-100 py-3 fw-bold rounded-pill shadow-sm">Sign In</button>
+              </form>
+
+              <div class="mt-5 text-center">
+                <p class="text-secondary small">Don't have an account?
+                  <a href="javascript:void(0)" onclick="toggleAuthView('signup')"
+                    class="text-warning fw-bold text-decoration-none ms-1">Create an Account</a>
+                </p>
+              </div>
             </div>
 
-            <button class="btn btn-warning w-100">Login</button>
-          </form>
-        </div>
+            <!-- Signup View (Hidden by default) -->
+            <div id="signupView" style="display: none;">
+              <h3 class="head-royal text-warning mb-2">Join the Feast</h3>
+              <p class="text-secondary mb-4">Experience royalty in every bite.</p>
 
-        <div class="modal-footer border-warning justify-content-center text-center">
-          <small class="text-secondary">
-            New user?
-            <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal"
-              class="text-warning ms-1">
-              Sign Up
-            </a>
-          </small>
-        </div>
+              <form>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Full Name</label>
+                  <input type="text" class="form-control premium-input" placeholder="John Doe">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Email Address</label>
+                  <input type="email" class="form-control premium-input" placeholder="name@example.com">
+                </div>
+                <div class="mb-4">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Password</label>
+                  <input type="password" class="form-control premium-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-warning w-100 py-3 fw-bold rounded-pill shadow-sm">Sign Up</button>
+              </form>
 
+              <div class="mt-5 text-center">
+                <p class="text-secondary small">Already have an account?
+                  <a href="javascript:void(0)" onclick="toggleAuthView('login')"
+                    class="text-warning fw-bold text-decoration-none ms-1">Sign In</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <!-- Sign Up Modal -->
-  <div class="modal fade" id="signupModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-light">
 
-        <div class="modal-header border-warning">
-          <div class="d-flex align-items-center">
-            <img src="./assets/images/foodoglogo.jpg" alt="Royal Feast Logo" style="width:40px;height:40px;border-radius:999px;object-fit:cover;
-                      border:1px solid var(--rf-premium-soft);margin-right:10px;">
-            <div>
-              <h5 class="modal-title text-warning mb-0">Create an Account</h5>
-              <small class="text-secondary">Join the Royal Feast family</small>
-            </div>
-          </div>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-control" placeholder="Enter name">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" placeholder="Enter email">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" placeholder="Create password">
-            </div>
-
-            <button class="btn btn-warning w-100">Sign Up</button>
-          </form>
-        </div>
-
-        <div class="modal-footer border-warning justify-content-center text-center">
-          <small class="text-secondary">
-            Already have an account?
-            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal"
-              class="text-warning ms-1">
-              Login
-            </a>
-          </small>
-        </div>
-
-      </div>
-    </div>
-  </div>
+  <script>
+    function toggleAuthView(view) {
+      const loginView = document.getElementById('loginView');
+      const signupView = document.getElementById('signupView');
+      if (view === 'signup') {
+        loginView.style.display = 'none';
+        signupView.style.display = 'block';
+      } else {
+        loginView.style.display = 'block';
+        signupView.style.display = 'none';
+      }
+    }
+  </script>
   <!-- end navbar  -->
 
   <!-- start banner -->

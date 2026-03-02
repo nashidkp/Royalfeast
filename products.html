@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Products</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body class="bg-dark text-light">
@@ -18,7 +18,7 @@
     <i class="bi bi-whatsapp text-white fs-3"></i>
   </a>
   <!-- start navbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg fixed-top glass-navbar">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html#home">
         <img src="./assets/images/foodoglogo.jpg" alt="..." width="70" height="60">
@@ -45,53 +45,40 @@
             <a class="nav-link" href="#contact">Contact Us</a>
           </li>
         </ul>
-        <button class="btn btn-warning ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button class="btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#loginModal">
           Login
         </button>
       </div>
     </div>
-    </div>
     <div class="modal fade" id="loginModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-light border border-warning">
-
           <div class="modal-header border-warning">
             <h5 class="modal-title text-warning">Login to Your Account</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
           </div>
-
           <div class="modal-body">
             <form>
               <div class="mb-3">
                 <label class="form-label">Email</label>
                 <input type="email" class="form-control" placeholder="Enter email">
               </div>
-
               <div class="mb-3">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" placeholder="Enter password">
               </div>
-
               <button class="btn btn-warning w-100">Login</button>
             </form>
           </div>
-
           <div class="modal-footer border-warning">
             <small class="text-secondary">New user? Register here</small>
           </div>
-
         </div>
       </div>
     </div>
-
-
-    </div>
-    </div>
-    </div>
-    </div>
   </nav>
   <!-- end navbar  -->
-  <main class="container py-5">
+  <main class="container py-5" style="padding-top: calc(var(--nav-height, 80px) + 2rem) !important;">
     <!-- Top creator/profile strip similar to reference -->
     <section class="bg-body-tertiary rounded-4 p-4 p-md-5 mb-4 shadow-sm">
       <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-4">
@@ -105,26 +92,37 @@
           </div>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-outline-warning rounded-pill js-open-favourites">
-            <i class="bi bi-bookmark-heart me-2"></i>Save Favourites
-          </button>
+
           <a href="https://api.whatsapp.com/send?phone=918590568859&text=Hello%20Royal%20Feast" target="_blank"
             class="btn btn-warning text-dark rounded-pill">
             <i class="bi bi-telephone-outbound me-2"></i>Get in touch
           </a>
+          <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+            style="width: 42px; height: 42px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#favSidebar"
+            title="My Favourites">
+            <i class="bi bi-heart-fill text-danger"></i>
+          </button>
         </div>
       </div>
 
-      <!-- Favourites list (initially hidden) -->
-      <div id="favouritesPanel" class="mt-4 d-none">
-        <p class="small text-secondary mb-2">Your saved favourites</p>
-        <div id="favouritesList" class="d-flex flex-wrap gap-2"></div>
-      </div>
+
     </section>
 
     <!-- Controls row (sort + filters) -->
-    <section class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-4">
-      <h5 class="mb-0">Showing popular dishes</h5>
+    <section class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-4 mb-5">
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-3 flex-grow-1">
+        <h5 class="mb-0 text-nowrap">Showing popular dishes</h5>
+        <div class="search-container flex-grow-1" style="max-width: 400px;">
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-warning text-warning">
+              <i class="bi bi-search"></i>
+            </span>
+            <input type="text" id="productSearch" class="form-control bg-transparent border-warning text-white"
+              placeholder="Search dishes..." aria-label="Search dishes">
+          </div>
+        </div>
+      </div>
+
       <div class="d-flex flex-column flex-md-row align-items-md-center gap-3">
         <div class="d-flex flex-wrap gap-2">
           <div class="dropdown">
@@ -159,10 +157,22 @@
     <section class="row g-4" id="productsGrid">
       <!-- Card 1 -->
       <div class="col-sm-6 col-lg-3">
-        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="220">
+        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="220"
+          data-name="Signature Burger" data-img="./assets/images/foodcard1.jpg"
+          data-desc="A bold, hand-pressed beef patty grilled to perfection, layered with aged cheddar, crispy lettuce, vine tomatoes, pickles, and our secret smoky house sauce — all tucked into a toasted brioche bun."
+          data-ingredients="Beef patty, cheddar cheese, brioche bun, lettuce, tomato, pickles, house sauce"
+          data-allergens="Gluten, Dairy, Eggs" data-calories="680 kcal" data-time="15–20 min" data-badge="Non-veg"
+          data-badgeclass="badge bg-warning text-dark rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20a%20Signature%20Burger"
+          onclick="openDishModal(this)">
           <div class="position-relative">
             <img src="./assets/images/foodcard1.jpg" class="w-100 recipe-card-img" alt="Signature Burger">
             <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
             <div class="position-absolute bottom-0 start-0 end-0 p-3">
               <span class="badge bg-warning text-dark rounded-pill mb-2">Non‑veg</span>
               <h6 class="mb-1">Signature Burger</h6>
@@ -174,16 +184,8 @@
               <span class="fw-semibold text-warning">₹220</span>
               <small class="text-secondary"><i class="bi bi-clock me-1"></i>15–20 min</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <button type="button" class="btn btn-outline-light btn-sm favourite-toggle" data-id="signature-burger"
-                data-name="Signature Burger">
-                <i class="bi bi-heart me-1"></i>
-                <i class="bi bi-heart-fill me-1"></i>
-                Favourite
-              </button>
-            </div>
             <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
-              onclick="window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Signature%20Burger','_blank')">
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Signature%20Burger','_blank')">
               Order now
             </button>
           </div>
@@ -192,10 +194,22 @@
 
       <!-- Card 2 -->
       <div class="col-sm-6 col-lg-3">
-        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="320">
+        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="320"
+          data-name="Stone Oven Pizza" data-img="./assets/images/foodcard2.jpg"
+          data-desc="Fired in a traditional stone oven at 400°C, our pizza features a hand-stretched thin crust loaded with rich tomato base, double mozzarella, fresh basil, sun-dried tomatoes, and seasonal toppings. A slice of Italy, right here."
+          data-ingredients="Pizza dough, mozzarella, tomato base, basil, sun-dried tomatoes, toppings"
+          data-allergens="Gluten, Dairy" data-calories="820 kcal" data-time="20–25 min" data-badge="Non-veg"
+          data-badgeclass="badge bg-warning text-dark rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Stone%20Oven%20Pizza"
+          onclick="openDishModal(this)">
           <div class="position-relative">
             <img src="./assets/images/foodcard2.jpg" class="w-100 recipe-card-img" alt="Stone Oven Pizza">
             <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
             <div class="position-absolute bottom-0 start-0 end-0 p-3">
               <span class="badge bg-warning text-dark rounded-pill mb-2">Non‑veg</span>
               <h6 class="mb-1">Stone Oven Pizza</h6>
@@ -207,16 +221,8 @@
               <span class="fw-semibold text-warning">₹320</span>
               <small class="text-secondary"><i class="bi bi-clock me-1"></i>20–25 min</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <button type="button" class="btn btn-outline-light btn-sm favourite-toggle" data-id="stone-oven-pizza"
-                data-name="Stone Oven Pizza">
-                <i class="bi bi-heart me-1"></i>
-                <i class="bi bi-heart-fill me-1"></i>
-                Favourite
-              </button>
-            </div>
             <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
-              onclick="window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Stone%20Oven%20Pizza','_blank')">
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Stone%20Oven%20Pizza','_blank')">
               Order now
             </button>
           </div>
@@ -225,10 +231,22 @@
 
       <!-- Card 3 -->
       <div class="col-sm-6 col-lg-3">
-        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="140">
+        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="140"
+          data-name="Masala Dosa" data-img="./assets/images/veg1.jpg"
+          data-desc="A beloved South Indian classic — a wafer-thin, golden-crisp fermented rice crepe generously filled with perfectly spiced mashed potato sabzi. Served piping hot with tangy coconut chutney and a bowl of hearty sambar."
+          data-ingredients="Rice batter, urad dal, potato, mustard seeds, curry leaves, turmeric, coconut chutney, sambar"
+          data-allergens="None (check sambar for tree nuts)" data-calories="380 kcal" data-time="10–15 min"
+          data-badge="Veg" data-badgeclass="badge bg-success rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20a%20Masala%20Dosa"
+          onclick="openDishModal(this)">
           <div class="position-relative">
             <img src="./assets/images/veg1.jpg" class="w-100 recipe-card-img" alt="Masala Dosa">
             <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
             <div class="position-absolute bottom-0 start-0 end-0 p-3">
               <span class="badge bg-success rounded-pill mb-2">Veg</span>
               <h6 class="mb-1">Masala Dosa</h6>
@@ -240,16 +258,8 @@
               <span class="fw-semibold text-warning">₹140</span>
               <small class="text-secondary"><i class="bi bi-clock me-1"></i>10–15 min</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <button type="button" class="btn btn-outline-light btn-sm favourite-toggle" data-id="masala-dosa"
-                data-name="Masala Dosa">
-                <i class="bi bi-heart me-1"></i>
-                <i class="bi bi-heart-fill me-1"></i>
-                Favourite
-              </button>
-            </div>
             <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
-              onclick="window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Masala%20Dosa','_blank')">
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Masala%20Dosa','_blank')">
               Order now
             </button>
           </div>
@@ -258,10 +268,21 @@
 
       <!-- Card 4 -->
       <div class="col-sm-6 col-lg-3">
-        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="110">
+        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="110"
+          data-name="Soft Idli Platter" data-img="./assets/images/veg2.jpg"
+          data-desc="Soft and fluffy steamed rice cakes made from fermented rice and lentil batter. A healthy and traditional South Indian breakfast served with coconut chutney and sambar."
+          data-ingredients="Rice, lentils, salt, coconut chutney, sambar" data-allergens="None" data-calories="280 kcal"
+          data-time="10–12 min" data-badge="Veg" data-badgeclass="badge bg-success rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20an%20Idli%20Platter"
+          onclick="openDishModal(this)">
           <div class="position-relative">
             <img src="./assets/images/veg2.jpg" class="w-100 recipe-card-img" alt="Soft Idli Platter">
             <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
             <div class="position-absolute bottom-0 start-0 end-0 p-3">
               <span class="badge bg-success rounded-pill mb-2">Veg</span>
               <h6 class="mb-1">Soft Idli Platter</h6>
@@ -273,16 +294,9 @@
               <span class="fw-semibold text-warning">₹110</span>
               <small class="text-secondary"><i class="bi bi-clock me-1"></i>10–12 min</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <button type="button" class="btn btn-outline-light btn-sm favourite-toggle" data-id="soft-idli-platter"
-                data-name="Soft Idli Platter">
-                <i class="bi bi-heart me-1"></i>
-                <i class="bi bi-heart-fill me-1"></i>
-                Favourite
-              </button>
-            </div>
+
             <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
-              onclick="window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20an%20Idli%20Platter','_blank')">
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20an%20Idli%20Platter','_blank')">
               Order now
             </button>
           </div>
@@ -291,10 +305,22 @@
 
       <!-- Card 5 -->
       <div class="col-sm-6 col-lg-3">
-        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="260">
+        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="260"
+          data-name="Crispy Broast" data-img="./assets/images/foodcard3.jpg"
+          data-desc="Marinated overnight in a secret blend of spices and buttermilk, our whole chicken pieces are pressure-fried to lock in juices while delivering a shatteringly crispy golden crust. Served with garlic dip and sriracha mayo."
+          data-ingredients="Chicken, buttermilk, spice blend, flour, garlic dip, sriracha mayo"
+          data-allergens="Gluten, Dairy, Eggs" data-calories="720 kcal" data-time="20–25 min" data-badge="Non-veg"
+          data-badgeclass="badge bg-warning text-dark rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20a%20Crispy%20Broast"
+          onclick="openDishModal(this)">
           <div class="position-relative">
             <img src="./assets/images/foodcard3.jpg" class="w-100 recipe-card-img" alt="Crispy Broast">
             <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
             <div class="position-absolute bottom-0 start-0 end-0 p-3">
               <span class="badge bg-warning text-dark rounded-pill mb-2">Non‑veg</span>
               <h6 class="mb-1">Crispy Broast</h6>
@@ -306,16 +332,8 @@
               <span class="fw-semibold text-warning">₹260</span>
               <small class="text-secondary"><i class="bi bi-clock me-1"></i>20–25 min</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <button type="button" class="btn btn-outline-light btn-sm favourite-toggle" data-id="crispy-broast"
-                data-name="Crispy Broast">
-                <i class="bi bi-heart me-1"></i>
-                <i class="bi bi-heart-fill me-1"></i>
-                Favourite
-              </button>
-            </div>
             <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
-              onclick="window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Crispy%20Broast','_blank')">
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Crispy%20Broast','_blank')">
               Order now
             </button>
           </div>
@@ -324,12 +342,24 @@
 
       <!-- Card 6 -->
       <div class="col-sm-6 col-lg-3">
-        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="180">
+        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="180"
+          data-name="Loaded Fries" data-img="./assets/images/foodcard5.jpg"
+          data-desc="Crispy golden fries topped with a generous layer of melted cheese, spicy jalapeños, and our signature house sauce. The ultimate comfort food."
+          data-ingredients="Potatoes, cheese, jalapeños, house sauce, seasoning" data-allergens="Dairy"
+          data-calories="540 kcal" data-time="10–15 min" data-badge="Sides"
+          data-badgeclass="badge bg-warning text-dark rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Loaded%20Fries"
+          onclick="openDishModal(this)">
           <div class="position-relative">
             <img src="./assets/images/foodcard5.jpg" class="w-100 recipe-card-img" alt="Loaded Fries">
             <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
             <div class="position-absolute bottom-0 start-0 end-0 p-3">
-              <span class="badge bg-warning text-dark rounded-pill mb-2">Sides</span>
+              <span class="badge bg-warning text-dark rounded-pill mb-2">Non-veg</span>
               <h6 class="mb-1">Loaded Fries</h6>
               <p class="recipe-meta mb-0 text-secondary">Cheese, jalapeños & house sauce</p>
             </div>
@@ -339,16 +369,9 @@
               <span class="fw-semibold text-warning">₹180</span>
               <small class="text-secondary"><i class="bi bi-clock me-1"></i>10–15 min</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <button type="button" class="btn btn-outline-light btn-sm favourite-toggle" data-id="loaded-fries"
-                data-name="Loaded Fries">
-                <i class="bi bi-heart me-1"></i>
-                <i class="bi bi-heart-fill me-1"></i>
-                Favourite
-              </button>
-            </div>
+
             <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
-              onclick="window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Loaded%20Fries','_blank')">
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Loaded%20Fries','_blank')">
               Order now
             </button>
           </div>
@@ -357,10 +380,21 @@
 
       <!-- Card 7 -->
       <div class="col-sm-6 col-lg-3">
-        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="90">
+        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="90"
+          data-name="Crispy Vada" data-img="./assets/images/veg3.jpg"
+          data-desc="Traditional South Indian medu vada made from ground urad dal batter, seasoned with green chillies, curry leaves, and fresh ginger. Deep-fried to a satisfying crunch on the outside while remaining fluffy and airy inside. Paired with coconut chutney."
+          data-ingredients="Urad dal, green chilli, curry leaves, ginger, coconut chutney" data-allergens="None"
+          data-calories="210 kcal" data-time="8–10 min" data-badge="Veg" data-badgeclass="badge bg-success rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20Crispy%20Vada"
+          onclick="openDishModal(this)">
           <div class="position-relative">
             <img src="./assets/images/veg3.jpg" class="w-100 recipe-card-img" alt="Crispy Vada">
             <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
             <div class="position-absolute bottom-0 start-0 end-0 p-3">
               <span class="badge bg-success rounded-pill mb-2">Veg</span>
               <h6 class="mb-1">Crispy Vada</h6>
@@ -372,16 +406,8 @@
               <span class="fw-semibold text-warning">₹90</span>
               <small class="text-secondary"><i class="bi bi-clock me-1"></i>8–10 min</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <button type="button" class="btn btn-outline-light btn-sm favourite-toggle" data-id="crispy-vada"
-                data-name="Crispy Vada">
-                <i class="bi bi-heart me-1"></i>
-                <i class="bi bi-heart-fill me-1"></i>
-                Favourite
-              </button>
-            </div>
             <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
-              onclick="window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Crispy%20Vada','_blank')">
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Crispy%20Vada','_blank')">
               Order now
             </button>
           </div>
@@ -390,10 +416,22 @@
 
       <!-- Card 8 -->
       <div class="col-sm-6 col-lg-3">
-        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="130">
+        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="130"
+          data-name="Puri Bhaji" data-img="./assets/images/veg4.jpg"
+          data-desc="Light, hollow, beautifully puffed puris fried to a soft golden brown, served alongside a rich and aromatic potato bhaji slow-cooked with onions, tomatoes, green chillies, and fragrant Indian spices. A comforting classic, every single time."
+          data-ingredients="Maida, potato, onion, tomato, green chilli, turmeric, coriander, garam masala"
+          data-allergens="Gluten" data-calories="430 kcal" data-time="12–15 min" data-badge="Veg"
+          data-badgeclass="badge bg-success rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20Puri%20Bhaji"
+          onclick="openDishModal(this)">
           <div class="position-relative">
             <img src="./assets/images/veg4.jpg" class="w-100 recipe-card-img" alt="Puri Bhaji">
             <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
             <div class="position-absolute bottom-0 start-0 end-0 p-3">
               <span class="badge bg-success rounded-pill mb-2">Veg</span>
               <h6 class="mb-1">Puri Bhaji</h6>
@@ -405,88 +443,443 @@
               <span class="fw-semibold text-warning">₹130</span>
               <small class="text-secondary"><i class="bi bi-clock me-1"></i>12–15 min</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <button type="button" class="btn btn-outline-light btn-sm favourite-toggle" data-id="puri-bhaji"
-                data-name="Puri Bhaji">
-                <i class="bi bi-heart me-1"></i>
-                <i class="bi bi-heart-fill me-1"></i>
-                Favourite
-              </button>
-            </div>
             <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
-              onclick="window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Puri%20Bhaji','_blank')">
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Puri%20Bhaji','_blank')">
               Order now
             </button>
           </div>
         </article>
       </div>
+      <!-- Card 9 -->
+      <div class="col-sm-6 col-lg-3">
+        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="990"
+          data-name="Sheek Kabab" data-img="./assets/images/fc1.jpg"
+          data-desc="Traditionally prepared with lamb, beef, or chicken, the meat is blended with ingredients like garlic, ginger, green chilies, cumin, coriander, and fresh cilantro, then shaped around skewers and cooked over charcoal or in a tandoor."
+          data-ingredients="Chicken, beef, spice blend, flour, garlic dip, sriracha mayo"
+          data-allergens="Chicken, Beef, Eggs" data-calories="720 kcal" data-time="20–25 min" data-badge="Non-veg"
+          data-badgeclass="badge bg-warning text-dark rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20a%20Sheek%20Kabab"
+          onclick="openDishModal(this)">
+          <div class="position-relative">
+            <img src="./assets/images/fc1.jpg" class="w-100 recipe-card-img" alt="sheek kabab">
+            <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="position-absolute bottom-0 start-0 end-0 p-3">
+              <span class="badge bg-warning text-dark rounded-pill mb-2">Non‑veg</span>
+              <h6 class="mb-1">Sheek Kabab</h6>
+              <p class="recipe-meta mb-0 text-secondary">Slow Cooked, served with dips</p>
+            </div>
+          </div>
+          <div class="card-body recipe-card-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-semibold text-warning">₹990</span>
+              <small class="text-secondary"><i class="bi bi-clock me-1"></i>20–25 min</small>
+            </div>
+            <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Sheek%20Kabab','_blank')">
+              Order now
+            </button>
+          </div>
+        </article>
+      </div>
+      <!-- Card 10 -->
+      <div class="col-sm-6 col-lg-3">
+        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="560"
+          data-name="Shawaya" data-img="./assets/images/fc4.jpg"
+          data-desc="The chicken is then slow-roasted or grilled on a rotisserie over charcoal, which gives it a smoky flavor and crispy golden-brown skin while keeping the inside tender and juicy."
+          data-ingredients="Chicken, spice blend, flour, garlic dip, sriracha mayo"
+          data-allergens="Chicken, black pepper, garlic, lemon juice" data-calories="720 kcal" data-time="20–25 min"
+          data-badge="Non-veg" data-badgeclass="badge bg-warning text-dark rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20a%20Shawaya"
+          onclick="openDishModal(this)">
+          <div class="position-relative">
+            <img src="./assets/images/fc4.jpg" class="w-100 recipe-card-img" alt="shawaya">
+            <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="position-absolute bottom-0 start-0 end-0 p-3">
+              <span class="badge bg-warning text-dark rounded-pill mb-2">Non‑veg</span>
+              <h6 class="mb-1">Shawaya</h6>
+              <p class="recipe-meta mb-0 text-secondary">Served with flatbread, garlic sauce, and
+                rice</p>
+            </div>
+          </div>
+          <div class="card-body recipe-card-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-semibold text-warning">₹560</span>
+              <small class="text-secondary"><i class="bi bi-clock me-1"></i>20–25 min</small>
+            </div>
+            <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Shawaya','_blank')">
+              Order now
+            </button>
+          </div>
+        </article>
+      </div>
+      <!-- Card 10 -->
+      <div class="col-sm-6 col-lg-3">
+        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="190"
+          data-name="Chicken Wrap" data-img="./assets/images/fc5.jpg"
+          data-desc="A chicken wrap is a delicious and convenient meal made by wrapping seasoned chicken and fresh fillings inside a soft flatbread such as tortilla, roti, or pita."
+          data-ingredients="Chicken and fresh fillings inside a soft flatbread such as tortilla, roti, or pita."
+          data-allergens="Chicken, vegies, Roti" data-calories="720 kcal" data-time="20–25 min" data-badge="Non-veg"
+          data-badgeclass="badge bg-warning text-dark rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20Chicken%20Wrap"
+          onclick="openDishModal(this)">
+          <div class="position-relative">
+            <img src="./assets/images/fc5.jpg" class="w-100 recipe-card-img" alt="Chicken Wrap">
+            <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="position-absolute bottom-0 start-0 end-0 p-3">
+              <span class="badge bg-warning text-dark rounded-pill mb-2">Non‑veg</span>
+              <h6 class="mb-1">Chicken Wrap</h6>
+              <p class="recipe-meta mb-0 text-secondary">They are often served with fries, salad.
+              </p>
+            </div>
+          </div>
+          <div class="card-body recipe-card-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-semibold text-warning">₹190</span>
+              <small class="text-secondary"><i class="bi bi-clock me-1"></i>20–25 min</small>
+            </div>
+            <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Chicken%20Wrap','_blank')">
+              Order now
+            </button>
+          </div>
+        </article>
+      </div>
+      <!-- Card 11 -->
+      <div class="col-sm-6 col-lg-3">
+        <article class="card recipe-card h-100 position-relative" data-category="nonveg" data-price="880"
+          data-name="Mandi" data-img="./assets/images/fc6.jpg"
+          data-desc="Chicken Mandi is a traditional Arabian rice dish known for its rich aroma, tender meat, and smoky flavor. It originated in Yemen and later became very popular across the Middle East, especially in Gulf countries."
+          data-ingredients="Slow-cooking chicken with fragrant basmati rice, mild spices, and herbs."
+          data-allergens="Chicken, Spices, Rice" data-calories="720 kcal" data-time="20–25 min" data-badge="Non-veg"
+          data-badgeclass="badge bg-warning text-dark rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20a%20Mandi"
+          onclick="openDishModal(this)">
+          <div class="position-relative">
+            <img src="./assets/images/fc6.jpg" class="w-100 recipe-card-img" alt="Mandi">
+            <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="position-absolute bottom-0 start-0 end-0 p-3">
+              <span class="badge bg-warning text-dark rounded-pill mb-2">Non‑veg</span>
+              <h6 class="mb-1">Mandi</h6>
+              <p class="recipe-meta mb-0 text-secondary">cooked until soft and juicy and with dips</p>
+            </div>
+          </div>
+          <div class="card-body recipe-card-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-semibold text-warning">₹880</span>
+              <small class="text-secondary"><i class="bi bi-clock me-1"></i>20–25 min</small>
+            </div>
+            <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20a%20Mandi','_blank')">
+              Order now
+            </button>
+          </div>
+        </article>
+      </div>
+      <!-- Card 12 -->
+      <div class="col-sm-6 col-lg-3">
+        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="100"
+          data-name="Gopi Manchurian" data-img="./assets/images/f7.jpg"
+          data-desc="A popular Indo-Chinese dish loved across India. The gravy version has a thicker sauce and is commonly eaten with fried rice or noodles."
+          data-ingredients="Cauliflower florets Cornflour, Ginger-garlic paste, Red chili powder"
+          data-allergens="Gluten" data-calories="430 kcal" data-time="12–15 min" data-badge="Veg"
+          data-badgeclass="badge bg-success rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20Gopi%20Manchurian"
+          onclick="openDishModal(this)">
+          <div class="position-relative">
+            <img src="./assets/images/f7.jpg" class="w-100 recipe-card-img" alt="Gopi Manchurian">
+            <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="position-absolute bottom-0 start-0 end-0 p-3">
+              <span class="badge bg-success rounded-pill mb-2">Veg</span>
+              <h6 class="mb-1">Gopi Manchurian</h6>
+              <p class="recipe-meta mb-0 text-secondary">A popular Indo-Chinese dish</p>
+            </div>
+          </div>
+          <div class="card-body recipe-card-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-semibold text-warning">₹100</span>
+              <small class="text-secondary"><i class="bi bi-clock me-1"></i>12–15 min</small>
+            </div>
+            <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Gopi%20Manchurian','_blank')">
+              Order now
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 13 -->
+      <div class="col-sm-6 col-lg-3">
+        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="220"
+          data-name="Paneer Butter" data-img="./assets/images/f8.jpg"
+          data-desc="Paneer Butter Masala is usually served hot with naan, roti, paratha, or jeera rice. Because of its mild spice level and creamy consistency."
+          data-ingredients="Paneer cubes,butter, cream, and aromatic spices." data-allergens="Gluten"
+          data-calories="430 kcal" data-time="12–15 min" data-badge="Veg"
+          data-badgeclass="badge bg-success rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20Paneer%20Butter"
+          onclick="openDishModal(this)">
+          <div class="position-relative">
+            <img src="./assets/images/f8.jpg" class="w-100 recipe-card-img" alt="Paneer Butter">
+            <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="position-absolute bottom-0 start-0 end-0 p-3">
+              <span class="badge bg-success rounded-pill mb-2">Veg</span>
+              <h6 class="mb-1">Paneer Butter</h6>
+              <p class="recipe-meta mb-0 text-secondary">Creamy texture and mildly sweet, buttery flavor.</p>
+            </div>
+          </div>
+          <div class="card-body recipe-card-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-semibold text-warning">₹220</span>
+              <small class="text-secondary"><i class="bi bi-clock me-1"></i>12–15 min</small>
+            </div>
+            <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Paneer%20Butter','_blank')">
+              Order now
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 14 -->
+
+      <div class="col-sm-6 col-lg-3">
+        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="120" data-name="Upma"
+          data-img="./assets/images/f9.jpg"
+          data-desc="Upma is a simple and healthy South Indian breakfast dish made from roasted rava."
+          data-ingredients="Rava,water, tempered spices, and vegetables." data-allergens="Gluten"
+          data-calories="430 kcal" data-time="12–15 min" data-badge="Veg"
+          data-badgeclass="badge bg-success rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20Upma"
+          onclick="openDishModal(this)">
+          <div class="position-relative">
+            <img src="./assets/images/f9.jpg" class="w-100 recipe-card-img" alt="Upma">
+            <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="position-absolute bottom-0 start-0 end-0 p-3">
+              <span class="badge bg-success rounded-pill mb-2">Veg</span>
+              <h6 class="mb-1">Upma</h6>
+              <p class="recipe-meta mb-0 text-secondary">Upma is soft and fluffy, with a comforting
+                flavor.</p>
+            </div>
+          </div>
+          <div class="card-body recipe-card-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-semibold text-warning">₹120</span>
+              <small class="text-secondary"><i class="bi bi-clock me-1"></i>14–15 min</small>
+            </div>
+            <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Upma','_blank')">
+              Order now
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 15 -->
+
+      <div class="col-sm-6 col-lg-3">
+        <article class="card recipe-card h-100 position-relative" data-category="veg" data-price="80"
+          data-name="Pav Bhaji" data-img="./assets/images/f10.jpg"
+          data-desc="Pav Bhaji is a popular Mumbai street food consisting of a spicy vegetable curry served with buttered pav (bread rolls)."
+          data-ingredients="Mixed vegetables, tomatoes, onions, spices, and buttered pav." data-allergens="Gluten"
+          data-calories="430 kcal" data-time="12–15 min" data-badge="Veg"
+          data-badgeclass="badge bg-success rounded-pill"
+          data-order="https://api.whatsapp.com/send?phone=8590568859&amp;text=Hello,%20I%20want%20to%20order%20Pav%20Bhaji"
+          onclick="openDishModal(this)">
+          <div class="position-relative">
+            <img src="./assets/images/f10.jpg" class="w-100 recipe-card-img" alt="Pav Bhaji">
+            <div class="recipe-card-overlay"></div>
+            <button class="heart-btn position-absolute top-0 end-0 m-2"
+              onclick="event.stopPropagation(); toggleHeart(this)" aria-label="Favourite">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="position-absolute bottom-0 start-0 end-0 p-3">
+              <span class="badge bg-success rounded-pill mb-2">Veg</span>
+              <h6 class="mb-1">Pav Bhaji</h6>
+              <p class="recipe-meta mb-0 text-secondary">Spicy flavorful curry served with buttered pav.
+              </p>
+            </div>
+          </div>
+          <div class="card-body recipe-card-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-semibold text-warning">₹80</span>
+              <small class="text-secondary"><i class="bi bi-clock me-1"></i>12–15 min</small>
+            </div>
+            <button class="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+              onclick="event.stopPropagation(); window.open('https://api.whatsapp.com/send?phone=8590568859&text=Hello,%20I%20want%20to%20order%20Pav%20Bhaji','_blank')">
+              Order now
+            </button>
+          </div>
+        </article>
+      </div>
+
     </section>
+
+    <!-- View More Button -->
+    <div class="text-center my-5 d-none" id="viewMoreContainer">
+      <button class="btn btn-warning text-dark px-5 py-2 rounded-pill fw-bold shadow-sm" id="viewMoreBtn">
+        View More
+      </button>
+    </div>
+
+
+    <!-- Shared Dish Detail Modal -->
+    <div class="modal fade" id="dishModal" tabindex="-1" aria-labelledby="dishModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content bg-dark border border-warning">
+          <div class="modal-header border-0 pb-0">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body p-0">
+            <div class="row g-0">
+              <!-- Image -->
+              <div class="col-md-5">
+                <img id="modal-img" src="" alt="" class="img-fluid w-100 h-100"
+                  style="object-fit:cover;max-height:420px;border-radius:0 0 0 0.5rem;">
+              </div>
+              <!-- Content -->
+              <div class="col-md-7 p-4">
+                <span id="modal-badge" class="badge mb-2"></span>
+                <h4 id="modal-name" class="text-warning fw-bold mb-1"></h4>
+                <div class="d-flex gap-3 mb-3">
+                  <span id="modal-price" class="fw-semibold text-warning fs-5"></span>
+                  <small id="modal-time" class="text-secondary align-self-center"><i
+                      class="bi bi-clock me-1"></i></small>
+                  <small id="modal-cal" class="text-secondary align-self-center"><i class="bi bi-fire me-1"></i></small>
+                </div>
+                <p id="modal-desc" class="text-secondary mb-3" style="font-size:0.95rem;line-height:1.7;"></p>
+                <div class="mb-2">
+                  <span class="text-warning fw-semibold"><i class="bi bi-egg-fried me-1"></i>Ingredients</span>
+                  <p id="modal-ingredients" class="text-secondary mt-1 mb-0" style="font-size:0.88rem;"></p>
+                </div>
+                <div class="mt-3">
+                  <span class="text-warning fw-semibold"><i class="bi bi-exclamation-triangle me-1"></i>Allergens</span>
+                  <p id="modal-allergens" class="text-secondary mt-1 mb-0" style="font-size:0.88rem;"></p>
+                </div>
+                <a id="modal-order" href="#" target="_blank"
+                  class="btn btn-warning text-dark px-5 rounded-pill fw-bold mt-4 btn-heartbeat d-block mx-auto"
+                  style="width: fit-content;">
+                  Order Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <div class="parallax-section">
 
-    <footer id="contact" class="text-light parallax-footer footer-clean">
-
-      <div class="container">
-
-        <div class="row gy-4 text-center text-md-start">
-
-          <!-- Column 1 -->
-          <div class="col-md-3">
-            <h5 class="text-warning footer-title">Royal Feast</h5>
-            <div class="divider mx-md-0 mx-auto"></div>
-            <p>Premium dining with quality food, warm services, and a memorable atmosphere.</p>
-            <a href="https://api.whatsapp.com/send?phone=918590568859&text=Hi%20Royal%20Feast,%20I%20would%20like%20to%20reserve%20a%20table"
-              target="_blank" class="btn btn-warning btn-sm mt-2">
-              Reserve Table
-            </a>
-          </div>
-
-          <!-- Column 2 -->
-          <div class="col-md-3">
-            <h5 class="text-warning footer-title">Opening Hours</h5>
-            <div class="divider mx-md-0 mx-auto"></div>
-            <p>Mon–Fri : 11:00 – 10:30</p>
-            <p>Sat : 11:00 – 11:30</p>
-            <p>Sun : 12:00 – 10:30</p>
-          </div>
-
-          <!-- Column 3 -->
-          <div class="col-md-3">
-            <h5 class="text-warning footer-title">Contact</h5>
-            <div class="divider mx-md-0 mx-auto"></div>
-            <p>📍 Calicut, Kerala</p>
-            <p>📞 +91 98765 43210</p>
-            <p>✉ info@royalfeast.com</p>
-          </div>
-
-          <!-- Column 4 -->
-          <div class="col-md-3">
-            <h5 class="text-warning footer-title">Follow Us</h5>
-            <div class="divider mx-md-0 mx-auto"></div>
-
-            <p>Stay connected for offers & updates</p>
-
-            <div class="social mt-2">
-              <a href="#" class="btn btn-outline-warning btn-sm rounded-circle me-1"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="btn btn-outline-warning btn-sm rounded-circle me-1"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="btn btn-outline-warning btn-sm rounded-circle"><i class="bi bi-whatsapp"></i></a>
+    <div class="parallax-section">
+      <footer id="contact" class="text-light parallax-footer footer-clean">
+        <div class="container">
+          <div class="row gy-4 text-center text-md-start">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+              <h5 class="text-warning footer-title">Royal Feast</h5>
+              <div class="divider mx-md-0 mx-auto"></div>
+              <p>Premium dining with quality food, warm services, and a memorable atmosphere.</p>
+              <a href="https://api.whatsapp.com/send?phone=918590568859&text=Hi%20Royal%20Feast,%20I%20would%20like%20to%20reserve%20a%20table"
+                target="_blank" class="btn btn-warning btn-sm mt-2">
+                Reserve Table
+              </a>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+              <h5 class="text-warning footer-title">Opening Hours</h5>
+              <div class="divider mx-md-0 mx-auto"></div>
+              <p>Mon–Fri : 11:00 – 10:30</p>
+              <p>Sat : 11:00 – 11:30</p>
+              <p>Sun : 12:00 – 10:30</p>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+              <h5 class="text-warning footer-title">Contact</h5>
+              <div class="divider mx-md-0 mx-auto"></div>
+              <p>📍 Calicut, Kerala</p>
+              <p>📞 +91 98765 43210</p>
+              <p>✉ info@royalfeast.com</p>
+            </div>
+            <!-- Column 4 -->
+            <div class="col-md-3">
+              <h5 class="text-warning footer-title">Follow Us</h5>
+              <div class="divider mx-md-0 mx-auto"></div>
+              <p>Stay connected for offers & updates</p>
+              <div class="social mt-2">
+                <a href="#" class="btn btn-outline-warning btn-sm rounded-circle me-1"><i
+                    class="bi bi-instagram"></i></a>
+                <a href="#" class="btn btn-outline-warning btn-sm rounded-circle me-1"><i
+                    class="bi bi-facebook"></i></a>
+                <a href="#" class="btn btn-outline-warning btn-sm rounded-circle"><i class="bi bi-whatsapp"></i></a>
+              </div>
             </div>
           </div>
-
+          <hr class="mt-4">
+          <div class="text-center small" style="color:#aaa;">
+            © 2026 Royal Feast — Where Taste Meets Elegance
+          </div>
         </div>
+      </footer>
+    </div>
 
-        <hr class="mt-4">
 
-        <div class="text-center small" style="color:#aaa;">
-          © 2026 Royal Feast — Where Taste Meets Elegance
-        </div>
-
+    <!-- Favourites Sidebar (Offcanvas) -->
+    <div class="offcanvas offcanvas-end bg-dark text-light border-start border-warning" tabindex="-1" id="favSidebar"
+      aria-labelledby="favSidebarLabel">
+      <div class="offcanvas-header border-bottom border-warning">
+        <h5 class="offcanvas-title text-warning" id="favSidebarLabel">
+          <i class="bi bi-heart-fill me-2"></i>My Favourites
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-    </footer>
-  </div>
+      <div class="offcanvas-body">
+        <div id="favSidebarContent" class="d-flex flex-column gap-3">
+          <!-- Dynamically populated by script.js -->
+          <div class="text-center py-5 opacity-50">
+            <i class="bi bi-heart fs-1 mb-3"></i>
+            <p>Your favourites list is empty</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

@@ -32,68 +32,221 @@ body {
     object-fit: contain;
 }
 
-/* =========================================
-   Navbar (Modern Glassmorphism)
-   ========================================= */
-
 .navbar-wrapper {
     position: fixed;
-    top: 0;
+    top: 20px;
     left: 0;
     right: 0;
+    z-index: 2000;
     display: flex;
     justify-content: center;
-    z-index: 1050;
-    padding: 15px 0;
-    /* Perfectly aligned with logo (top: 15px) */
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
-    /* Let clicks pass through padding area */
+}
+
+.navbar-wrapper.scrolled {
+    top: 0 !important;
+    padding: 0 !important;
 }
 
 .glass-navbar {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0 35px;
-    /* Balanced interior spacing with extra room after login */
-    min-height: var(--nav-height);
-    width: auto;
-    /* Centered width */
-    min-width: 45%;
-    border-radius: 100px;
-    /* Oval shape */
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(15, 15, 15, 0.9) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 10px 25px !important;
+    min-height: 70px;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 100px !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     pointer-events: auto;
-    /* Re-enable clicks for the pill itself */
+    margin: 0 auto;
 }
 
-/* Adjust banner images to overlay navbar initially */
-.hero-carousel {
-    margin-top: 0;
-}
-
-.hero-carousel .carousel-item img {
-    height: 100vh;
-    object-fit: cover;
+.navbar-wrapper.scrolled .glass-navbar {
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(10, 10, 10, 0.98) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    padding: 8px 40px !important;
 }
 
 .glass-navbar .navbar-brand {
-    display: none;
-    /* Hide any legacy logo inside navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 193, 7, 0.05);
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 0;
+}
+
+.glass-navbar .navbar-brand img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.glass-navbar .navbar-brand:hover {
+    border-color: #ffc107;
+    transform: scale(1.05);
+}
+
+.glass-navbar .navbar-brand:hover img {
+    transform: scale(1.1);
+}
+
+/* Removed fragile scroll-docking CSS for a persistent perfectly-sticky pill */
+/* Adjusted nav links for compact layout */
+@media (min-width: 992px) {
+    .glass-navbar .navbar-nav {
+        display: flex;
+        gap: 10px;
+        margin: 0 !important;
+    }
 }
 
 .glass-navbar .nav-link {
     color: rgba(255, 255, 255, 0.8) !important;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.5rem 1.2rem !important;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 16px !important;
+    border-radius: 50px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.glass-navbar .nav-link:hover,
+.glass-navbar .nav-link.active {
+    color: #ffc107 !important;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Premium Login Button - Compact */
+.btn-login {
+    background: #ffc107 !important;
+    /* Consistent yellow theme */
+    color: #000000 !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 8px 20px !important;
+    font-weight: 800 !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
+}
+
+.btn-login:hover {
+    background: #ffca2c !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+}
+
+.navbar-toggler {
+    border: 1px solid rgba(255, 193, 7, 0.4) !important;
+    padding: 6px 10px !important;
+    border-radius: 12px !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.3) !important;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1) brightness(1.5) sepia(1) hue-rotate(3deg) saturate(5);
+    /* Make it golden */
+}
+
+@media (min-width: 992px) {
+    .glass-navbar .navbar-nav {
+        display: flex;
+        gap: 15px;
+        /* Increased gap */
+        margin: 0 !important;
+    }
+}
+
+.glass-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 8px 18px !important;
+    border-radius: 50px;
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     position: relative;
-    border-radius: 999px;
+}
+
+@media (max-width: 991px) {
+    .navbar-wrapper {
+        top: 10px;
+        padding: 0 10px;
+    }
+
+    .glass-navbar {
+        width: 95% !important;
+        max-width: none !important;
+        border-radius: 30px !important;
+        padding: 8px 15px !important;
+    }
+
+    .glass-navbar .navbar-collapse {
+        background: rgba(15, 15, 15, 0.98);
+        backdrop-filter: blur(20px);
+        margin-top: 15px;
+        border-radius: 20px;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-navbar .navbar-nav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .glass-navbar .nav-link {
+        padding: 12px !important;
+        border-radius: 12px;
+    }
+
+    .glass-navbar .nav-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+.branch-card:hover {
+    transform: translateY(-10px);
+    border-color: #ffc107;
+    background: rgba(30, 41, 59, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.branch-img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.branch-card:hover .branch-img {
+    transform: scale(1.05);
 }
 
 .glass-navbar .nav-link:hover,
@@ -212,49 +365,7 @@ body {
 }
 
 
-/* Scrolled state: transition to fixed top full-width */
-.glass-navbar.scrolled {
-    width: 100%;
-    border-radius: 0;
-    background: rgba(0, 0, 0, 0.9);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.scrolled .container-fluid {
-    max-width: 100%;
-}
-
-/* Update wrapper when navbar is scrolled */
-window:has(.glass-navbar.scrolled) .navbar-wrapper,
-.navbar-wrapper:has(.scrolled) {
-    padding: 0;
-}
-
-/* Since :has() might not be supported everywhere yet, we'll use a class on the wrapper too or just adjust the navbar itself */
-/* Alternative: target the wrapper via shared state or just accept the padding change if we apply scrolled to wrapper instead */
-
-/* Re-adjusting to apply .scrolled logic better */
-.glass-navbar.scrolled {
-    transform: translateY(-20px);
-    /* Cancel the wrapper padding visually if wrapper doesn't change */
-}
-
-/* Better approach: add .scrolled to the wrapper in JS too, or handle it here */
-.glass-navbar.scrolled {
-    margin-top: -20px;
-    /* Pull it to the very top */
-    width: 100vw;
-    border-radius: 0;
-}
-
-/* Ensure navbar transition is smooth and using flexbox */
-.glass-navbar .container-fluid {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-}
-
+/* Removed conflicting .scrolled overrides */
 @media (max-width: 991px) {
     .navbar-brand-fixed {
         top: 5px;
@@ -271,11 +382,10 @@ window:has(.glass-navbar.scrolled) .navbar-wrapper,
     }
 
     .glass-navbar {
-        min-width: 80%;
+        min-width: 90%;
         width: auto;
         border-radius: 50px;
         padding: 5px 15px;
-        display: flex !important;
         align-items: center;
         justify-content: space-between;
     }

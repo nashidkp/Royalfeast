@@ -8,174 +8,31 @@
   <style>
     .parallax-footer {
       position: relative;
-
       width: 100vw;
       left: 50%;
       right: 50%;
       margin-left: -50vw;
       margin-right: -50vw;
-
-      background:
-        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)),
-        url("./assets/images/parallex.jpg");
-
+      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url("./assets/images/parallex.jpg");
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    :root {
-      --nav-height: 80px;
-    }
-
-    body {
-      padding-top: var(--nav-height);
-    }
-
-    /* Glass navbar to match index */
-    .glass-navbar {
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .glass-navbar.scrolled {
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(25px) saturate(200%);
-      border-bottom: 1px solid rgba(255, 193, 7, 0.4);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 193, 7, 0.15);
-    }
-
-
-    .navbar-nav .nav-link {
-      color: #d2d2d2 !important;
-      font-weight: 500;
-      letter-spacing: .03em;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    .navbar-nav .nav-link::after {
-      content: "";
-      position: absolute;
-      bottom: 0px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: #ffc107;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-
-    .navbar-nav .nav-link.active::after,
-    .navbar-nav .nav-link:hover::after {
-      width: 70%;
-    }
-
-    .navbar-nav .nav-link.active,
-    .navbar-nav .nav-link:hover {
-      color: #ffc107 !important;
-      text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
-    }
-
-    /* Oval logo */
-    .navbar-brand img {
-      border-radius: 999px;
-      object-fit: cover;
-      border: 2px solid rgba(255, 193, 7, 0.3);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Shared section heading to match index */
-    .section-heading {
-      margin-bottom: 1.5rem;
-      color: #ffc107;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    /* Extra glow for navbar button */
-    .navbar .btn {
-      border-radius: 999px;
-      box-shadow:
-        0 0 12px rgba(255, 193, 7, 0.45),
-        0 0 28px rgba(255, 193, 7, 0.35);
-      transition:
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
-    }
-
-    .navbar .btn:hover {
-      box-shadow:
-        0 0 18px rgba(255, 193, 7, 0.7),
-        0 0 40px rgba(255, 193, 7, 0.6);
-      transform: translateY(-1px);
-    }
-
-    /* Footer styles to mirror index */
-    .footer-clean {
-      padding: 40px 0 20px;
-    }
-
-    .footer-title {
-      font-weight: 600;
-      letter-spacing: .5px;
-      margin-bottom: 6px;
-    }
-
-    .divider {
-      width: 55px;
-      height: 2px;
-      background: #ffc107;
-      margin-bottom: 12px;
-    }
-
-    .footer-clean p {
-      margin-bottom: 6px;
-      font-size: .95rem;
-      color: #d2d2d2;
-    }
-
-    .social a {
-      width: 36px;
-      height: 36px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Remove Bootstrap blue completely */
+    /* Remove Bootstrap blue completely from pills */
     .nav-pills .nav-link {
       color: #ffc107;
       border: 1px solid #ffc107;
       background-color: transparent;
+      border-radius: 999px;
     }
 
-    /* Active button = yellow box + black text */
     .nav-pills .nav-link.active {
       background-color: #ffc107 !important;
       color: #000 !important;
       border-color: #ffc107 !important;
     }
 
-    /* Remove blue focus shadow */
-    .nav-pills .nav-link:focus {
-      box-shadow: none !important;
-    }
-
-    /* Optional hover (keeps theme consistent) */
     .nav-pills .nav-link:hover {
       background-color: #ffc107;
       color: #000;
@@ -190,138 +47,130 @@
   </a>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/style.css?v=4" rel="stylesheet">
 </head>
 
-<body class="bg-dark text-light">
+<body id="home" class="bg-dark text-light">
   <!-- start navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top glass-navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="./assets/images/foodoglogo.jpg" alt="..." width="70" height="60">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html#products">Products</a>
-          </li>
+  <div class="navbar-wrapper">
+    <nav class="navbar navbar-expand-lg glass-navbar">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand me-3" href="index.html">
+          <img src="./assets/images/foodoglogo.jpg" alt="Logo" width="45" height="45" class="rounded-circle">
+        </a>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#offers">Offers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#contact">Contact Us</a>
-          </li>
-        </ul>
-        <button class="btn btn-warning ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-          Login
+        <!-- Toggler for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
-    </div>
-  </nav>
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-light">
 
-        <div class="modal-header border-warning">
-          <div class="d-flex align-items-center">
-            <img src="./assets/images/foodoglogo.jpg" alt="Royal Feast Logo" style="width:40px;height:40px;border-radius:999px;object-fit:cover;
-                      border:1px solid rgba(255,193,7,0.3);margin-right:10px;">
-            <div>
-              <h5 class="modal-title text-warning mb-0">Login to Your Account</h5>
-              <small class="text-secondary">Welcome back to Royal Feast</small>
-            </div>
-          </div>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Center Links -->
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#about">About Us</a></li>
+            <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#offers">Offers</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Us</a></li>
+          </ul>
 
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" placeholder="Enter email">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" placeholder="Enter password">
-            </div>
-
-            <button class="btn btn-warning w-100">Login</button>
-          </form>
-        </div>
-
-        <div class="modal-footer border-warning justify-content-center text-center">
-          <small class="text-secondary">
-            New user?
-            <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal"
-              class="text-warning ms-1">
-              Sign Up
-            </a>
-          </small>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!-- Sign Up Modal -->
-  <div class="modal fade" id="signupModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-light">
-
-        <div class="modal-header border-warning">
-          <div class="d-flex align-items-center">
-            <img src="./assets/images/foodoglogo.jpg" alt="Royal Feast Logo" style="width:40px;height:40px;border-radius:999px;object-fit:cover;
-                      border:1px solid rgba(255,193,7,0.3);margin-right:10px;">
-            <div>
-              <h5 class="modal-title text-warning mb-0">Create an Account</h5>
-              <small class="text-secondary">Join the Royal Feast family</small>
-            </div>
-          </div>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-control" placeholder="Enter name">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" placeholder="Enter email">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" placeholder="Create password">
-            </div>
-
-            <button class="btn btn-warning w-100">Sign Up</button>
-          </form>
-        </div>
-
-        <div class="modal-footer border-warning justify-content-center text-center">
-          <small class="text-secondary">
-            Already have an account?
-            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal"
-              class="text-warning ms-1">
+          <!-- Right-aligned Button -->
+          <div class="ms-3">
+            <button class="btn btn-login" data-bs-toggle="modal" data-bs-target="#authModal">
               Login
-            </a>
-          </small>
+            </button>
+          </div>
         </div>
+      </div>
+    </nav>
+  </div>
 
+  <!-- Unified Authentication Modal (Redesigned) -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content auth-modal-content overflow-hidden">
+        <div class="row g-0">
+          <!-- Visual Panel -->
+          <div class="col-lg-6 d-none d-lg-block modal-split-visual"
+            style="background-image: url('./assets/images/royal_feast_login_bg.png');">
+            <div class="visual-overlay d-flex flex-column justify-content-end p-5">
+              <h2 class="display-5 fw-bold text-white mb-3 head-royal font-playfair">A Taste of Royalty</h2>
+              <p class="text-white-50 lead mb-0">Experience the finest gourmet delights, prepared with passion and
+                served with elegance.</p>
+            </div>
+          </div>
+
+          <!-- Form Panel -->
+          <div class="col-lg-6 modal-split-form p-4 p-md-5 bg-dark">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="navbar-brand d-flex align-items-center justify-content-center"
+                style="width: 60px; height: 60px;">
+                <img src="./assets/images/foodoglogo.jpg" alt="Logo" class="w-100 h-100 object-fit-cover">
+              </div>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+
+            <!-- Login View -->
+            <div id="loginView">
+              <h3 class="head-royal text-warning mb-2 font-playfair">Welcome Back</h3>
+              <p class="text-secondary mb-4">Please enter your details to sign in.</p>
+
+              <form>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Email Address</label>
+                  <input type="email" class="form-control premium-input" placeholder="name@example.com">
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label small text-uppercase fw-bold text-secondary">Password</label>
+                    <a href="#" class="small text-warning text-decoration-none">Forgot?</a>
+                  </div>
+                  <input type="password" class="form-control premium-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-warning w-100 py-3 fw-bold rounded-pill shadow-sm">Sign In</button>
+              </form>
+
+              <div class="mt-5 text-center">
+                <p class="text-secondary small">Don't have an account?
+                  <a href="javascript:void(0)" onclick="toggleAuthView('signup')"
+                    class="text-warning fw-bold text-decoration-none ms-1">Create an Account</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Signup View (Hidden by default) -->
+            <div id="signupView" style="display: none;">
+              <h3 class="head-royal text-warning mb-2 font-playfair">Join the Feast</h3>
+              <p class="text-secondary mb-4">Experience royalty in every bite.</p>
+
+              <form>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Full Name</label>
+                  <input type="text" class="form-control premium-input" placeholder="John Doe">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Email Address</label>
+                  <input type="email" class="form-control premium-input" placeholder="name@example.com">
+                </div>
+                <div class="mb-4">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Password</label>
+                  <input type="password" class="form-control premium-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-warning w-100 py-3 fw-bold rounded-pill shadow-sm">Sign Up</button>
+              </form>
+
+              <div class="mt-5 text-center">
+                <p class="text-secondary small">Already have an account?
+                  <a href="javascript:void(0)" onclick="toggleAuthView('login')"
+                    class="text-warning fw-bold text-decoration-none ms-1">Sign In</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -671,24 +520,29 @@
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Match index: fade-in navbar style on scroll
-      document.addEventListener('DOMContentLoaded', function () {
-        const navbar = document.querySelector('.glass-navbar');
-        if (!navbar) return;
-
-        function handleScroll() {
-          if (window.scrollY > 40) {
-            navbar.classList.add('scrolled');
-          } else {
-            navbar.classList.remove('scrolled');
-          }
+      function toggleAuthView(view) {
+        const loginView = document.getElementById('loginView');
+        const signupView = document.getElementById('signupView');
+        if (view === 'signup') {
+          loginView.style.display = 'none';
+          signupView.style.display = 'block';
+        } else {
+          loginView.style.display = 'block';
+          signupView.style.display = 'none';
         }
+      }
 
-        handleScroll();
-        window.addEventListener('scroll', handleScroll);
-      });
+      // Navbar scroll transformation
+      window.onscroll = function () {
+        const navWrapper = document.querySelector('.navbar-wrapper');
+        if (window.pageYOffset > 50) {
+          navWrapper.classList.add('scrolled');
+        } else {
+          navWrapper.classList.remove('scrolled');
+        }
+      };
     </script>
 </body>
 

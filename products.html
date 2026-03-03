@@ -25,65 +25,42 @@
 
   <body id="home" class="bg-dark text-light">
     <!-- start navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top glass-navbar">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html#home">
-          <img src="./assets/images/foodoglogo.jpg" alt="..." width="70" height="60">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#about">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#products">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#offers">Offers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact Us</a>
-            </li>
-          </ul>
-          <button class="btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#loginModal">
-            Login
+    <div class="navbar-wrapper">
+      <nav class="navbar navbar-expand-lg glass-navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html#home">
+            <img src="./assets/images/foodoglogo.jpg" alt="..." width="70" height="60">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </div>
-      </div>
-      <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content bg-dark text-light border border-warning">
-            <div class="modal-header border-warning">
-              <h5 class="modal-title text-warning">Login to Your Account</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control" placeholder="Enter email">
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Password</label>
-                  <input type="password" class="form-control" placeholder="Enter password">
-                </div>
-                <button class="btn btn-warning w-100">Login</button>
-              </form>
-            </div>
-            <div class="modal-footer border-warning">
-              <small class="text-secondary">New user? Register here</small>
-            </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#about">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#offers">Offers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact Us</a>
+              </li>
+            </ul>
+            <a href="login.html" class="btn btn-warning ms-2">
+              Login
+            </a>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
     <!-- end navbar  -->
     <main class="container py-5" style="padding-top: calc(var(--nav-height, 80px) + 2rem) !important;">
       <!-- Top creator/profile strip similar to reference -->

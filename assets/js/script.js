@@ -5,6 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.style.setProperty('--nav-height', navbar.offsetHeight + 'px');
   }
 
+  // 1b. Navbar Scroll Listener
+  const navWrapper = document.querySelector('.navbar-wrapper');
+  window.addEventListener('scroll', () => {
+    if (navWrapper) {
+      if (window.scrollY > 20) {
+        navWrapper.classList.add('scrolled');
+      } else {
+        navWrapper.classList.remove('scrolled');
+      }
+    }
+  });
+
   // 2. Product Visibility Logic (Filter, Search, and View More)
   const filterButtons = document.querySelectorAll('.filter-btn');
   const productSearch = document.getElementById('productSearch');

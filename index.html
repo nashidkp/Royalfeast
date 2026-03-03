@@ -5,7 +5,331 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Royal Feast - Delicious Food Online!</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    /* Theme tokens */
+    :root {
+      --nav-height: 80px;
+      --rf-bg-main: #020309;
+      --rf-bg-gradient: radial-gradient(circle at top, #18181f 0, #020309 55%);
+      --rf-text-main: #f7f3e8;
+      --rf-muted: #b3ac9c;
+      --rf-premium: #d4af37;
+      --rf-premium-dark: #b08b27;
+      --rf-premium-soft: rgba(212, 175, 55, 0.18);
+      --rf-glass-bg: rgba(255, 255, 255, 0.05);
+      --rf-glass-border: rgba(212, 175, 55, 0.45);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      padding-top: var(--nav-height);
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(10, 10, 10, 1)),
+        var(--rf-bg-gradient);
+      color: var(--rf-text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* Soft fade at bottom while scrolling */
+    body::after {
+      content: "";
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 80px;
+      pointer-events: none;
+      z-index: 1020;
+    }
+
+    body::after {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+    }
+
+    /* Glass Navbar */
+
+
+    .carousel,
+    #hero,
+    .slider-section {
+      margin-top: 80px;
+    }
+
+    /* Parallax About Section */
+    .parallax-about {
+      position: relative;
+      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)),
+        url("./assets/images/parallex.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      padding: 0 15px;
+    }
+
+    .parallax-about .row {
+      align-items: center;
+    }
+
+    .parallax-about .glass-img-wrapper {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      border: 1px solid var(--rf-glass-border);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.75);
+      padding: 10px;
+      transition: 0.4s ease;
+    }
+
+    .parallax-about .glass-img-wrapper:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 55px rgba(212, 175, 55, 0.6);
+    }
+
+    .parallax-footer {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.98)),
+        url("./assets/images/parallex.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Parallax section starting from testimonials */
+    .parallax-section {
+      position: relative;
+      background: linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, .98)),
+        url("./assets/images/parallex.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 40px 0;
+    }
+
+    /* Glass cards / surfaces */
+    .glass-card,
+    .card,
+    .modal-content {
+      background: var(--rf-glass-bg) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--rf-glass-border) !important;
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
+      color: var(--rf-text-main);
+      will-change: transform, box-shadow, backdrop-filter;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        backdrop-filter 0.35s ease;
+    }
+
+    .glass-card:hover,
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+      border-color: rgba(212, 175, 55, 0.8) !important;
+      background: rgba(255, 255, 255, 0.09) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .star {
+      color: var(--rf-premium);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    /* Shared section heading */
+    .section-heading {
+      margin-bottom: 1.5rem;
+      color: var(--rf-premium);
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    /* Premium buttons – unify all button colors */
+    .btn,
+    .btn:focus {
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Extra glow for navbar button */
+    .navbar .btn {
+      box-shadow:
+        0 0 12px rgba(212, 175, 55, 0.45),
+        0 0 28px rgba(212, 175, 55, 0.35);
+      transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .navbar .btn:hover {
+      box-shadow:
+        0 0 18px rgba(212, 175, 55, 0.7),
+        0 0 40px rgba(212, 175, 55, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .btn-warning,
+    .btn-success,
+    .btn-outline-warning,
+    .btn-primary {
+      background: linear-gradient(135deg, var(--rf-premium), var(--rf-premium-dark));
+      border-color: var(--rf-premium-dark);
+      color: #0b0b0b !important;
+    }
+
+    .btn-warning:hover,
+    .btn-success:hover,
+    .btn-outline-warning:hover,
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--rf-premium-dark), var(--rf-premium));
+      border-color: var(--rf-premium-dark);
+      color: #000 !important;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-warning {
+      background: transparent;
+      color: var(--rf-premium) !important;
+      border-color: var(--rf-premium-soft);
+    }
+
+    .btn-outline-warning:hover {
+      background: var(--rf-premium-soft);
+    }
+
+    /* Hero banner – premium layout */
+    #carouselExampleAutoplaying {
+      height: 100vh;
+    }
+
+    #carouselExampleAutoplaying .carousel-inner,
+    #carouselExampleAutoplaying .carousel-item {
+      height: 100%;
+    }
+
+    #carouselExampleAutoplaying .carousel-item {
+      position: relative;
+    }
+
+    #carouselExampleAutoplaying img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    /* Dark + gold gradient overlay */
+    #carouselExampleAutoplaying .carousel-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.18), transparent 55%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.95));
+    }
+
+    /* Centered glass content block */
+    #carouselExampleAutoplaying .carousel-caption {
+      bottom: auto;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: left;
+      max-width: 640px;
+      width: 100%;
+      padding: 24px 32px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 24px;
+      border: 1px solid var(--rf-glass-border);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.85);
+    }
+
+    #carouselExampleAutoplaying .carousel-caption h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    #carouselExampleAutoplaying .carousel-caption p {
+      color: var(--rf-muted);
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Optional CTA row inside caption */
+    #carouselExampleAutoplaying .carousel-caption .btn {
+      margin-top: 0.75rem;
+    }
+
+    /* Controls – subtle, premium */
+    #carouselExampleAutoplaying .carousel-control-prev-icon,
+    #carouselExampleAutoplaying .carousel-control-next-icon {
+      filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
+    }
+
+    #carouselExampleAutoplaying .carousel-control-prev,
+    #carouselExampleAutoplaying .carousel-control-next {
+      width: 7%;
+    }
+
+    /* Footer */
+    .footer-clean {
+      padding: 40px 0 20px;
+    }
+
+    .footer-title {
+      font-weight: 600;
+      letter-spacing: .5px;
+      margin-bottom: 6px;
+    }
+
+    .divider {
+      width: 55px;
+      height: 2px;
+      background: var(--rf-premium);
+      margin-bottom: 12px;
+    }
+
+    .footer-clean p {
+      margin-bottom: 6px;
+      font-size: .95rem;
+      color: var(--rf-muted);
+    }
+
+    .social a {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Navbar logo – consistent with style.css */
+  </style>
   <link rel="icon" href="./assets/images/favicon.jpg" type="image/jpg">
   <a href="https://api.whatsapp.com/send?phone=918590568859&text=Hello%20Royal%20Feast"
     class="btn btn-success position-fixed bottom-0 end-0 m-4 rounded-circle shadow d-flex align-items-center justify-content-center"
@@ -18,7 +342,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
-<body>
+<body id="home">
   <!-- start navbar -->
   <nav class="navbar navbar-expand-lg fixed-top glass-navbar">
     <div class="container-fluid">
@@ -61,19 +385,18 @@
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
           </div>
 
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="Enter email">
+          <!-- Form Panel -->
+          <div class="col-lg-6 modal-split-form p-4 p-md-5 bg-dark">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="navbar-brand d-flex align-items-center justify-content-center"
+                style="width: 60px; height: 60px;">
+                <img src="./assets/images/foodoglogo.jpg" alt="Logo" class="w-100 h-100 object-fit-cover">
               </div>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
 
-              <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" placeholder="Enter password">
-              </div>
-
-              <button class="btn btn-warning w-100">Login</button>
+            <button class="btn btn-warning w-100">Login</button>
             </form>
           </div>
 
@@ -117,23 +440,10 @@
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" placeholder="Create password">
               </div>
-
-              <button class="btn btn-warning w-100">Sign Up</button>
-            </form>
           </div>
-
-          <div class="modal-footer border-warning">
-            <small class="text-secondary">
-              Already have an account?
-              <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal"
-                class="text-warning">
-                Login
-              </a>
-            </small>
-          </div>
-
         </div>
       </div>
+    </div>
     </div>
 
     </div>
@@ -147,26 +457,14 @@
 
       <div class="carousel-item active">
         <img src="./assets/images/f1.jpg" class="d-block w-100" alt="food">
-        <div class="carousel-caption text-start">
-          <h1 class="fw-bold">Delicious Fresh Meals</h1>
-          <p>Prepared with quality ingredients and care.</p>
-        </div>
       </div>
 
       <div class="carousel-item">
         <img src="./assets/images/f2.jpg" class="d-block w-100" alt="restaurant">
-        <div class="carousel-caption">
-          <h1 class="fw-bold">Comfortable Dining</h1>
-          <p>Relaxing atmosphere for family & friends.</p>
-        </div>
       </div>
 
       <div class="carousel-item">
         <img src="./assets/images/f3.jpg" class="d-block w-100" alt="chef">
-        <div class="carousel-caption text-end">
-          <h1 class="fw-bold">Taste You Can Trust</h1>
-          <p>Serving happiness on every plate.</p>
-        </div>
       </div>
 
     </div>
@@ -466,17 +764,56 @@
           </div>
         </div>
 
-        <!-- Review 2 -->
-        <div class="col-md-4">
-          <div class="glass-card p-4 text-center text-light h-100">
-            <h5 class="mb-2">Nisha M</h5>
-            <div class="star mb-3">★★★★★</div>
-            <p>
-              Loved the presentation and service quality. The broast was
-              perfectly crispy and staff were friendly.
-            </p>
+      </div> <!-- closes parallax-section for experiences -->
+
+      <!-- Branches Section (Static) -->
+      <div class="container py-5 mt-5">
+        <h2 class="section-heading text-center mb-5">OUR BRANCHES</h2>
+        <div class="row g-4 justify-content-center">
+          <!-- Branch 1: Calicut -->
+          <div class="col-md-4">
+            <div class="branch-card">
+              <img src="./assets/images/branches1.jpg" class="branch-img" alt="Calicut Branch">
+              <div class="p-4 text-center">
+                <h4 class="text-warning mb-3">CALICUT</h4>
+                <p class="text-light-50 small mb-4">The heart of our flavor journey. Experience royal dining in the
+                  city of spices.</p>
+                <a href="https://maps.google.com" target="_blank"
+                  class="btn btn-outline-warning btn-sm rounded-pill px-4">View Location</a>
+              </div>
+            </div>
+          </div>
+          <!-- Branch 2: Kochi -->
+          <div class="col-md-4">
+            <div class="branch-card">
+              <img src="./assets/images/branches2.jpg" class="branch-img" alt="Kochi Branch">
+              <div class="p-4 text-center">
+                <h4 class="text-warning mb-3">KOCHI</h4>
+                <p class="text-light-50 small mb-4">Where tradition meets modern appetite. Visit us at the coastal
+                  hub.</p>
+                <a href="https://maps.google.com" target="_blank"
+                  class="btn btn-outline-warning btn-sm rounded-pill px-4">View Location</a>
+              </div>
+            </div>
+          </div>
+          <!-- Branch 3: Dubai -->
+          <div class="col-md-4">
+            <div class="branch-card">
+              <img src="./assets/images/branches3.jpg" class="branch-img" alt="Dubai Branch">
+              <div class="p-4 text-center">
+                <h4 class="text-warning mb-3">DUBAI</h4>
+                <p class="text-light-50 small mb-4">Taking the royal feast global. Luxury dining experience in the
+                  city of gold.</p>
+                <a href="https://maps.google.com" target="_blank"
+                  class="btn btn-outline-warning btn-sm rounded-pill px-4">View Location</a>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div class="parallax-section">
+
 
         <!-- Review 3 -->
         <div class="col-md-4">
@@ -594,10 +931,6 @@
         </div>
 
         <hr class="mt-4">
-
-        <div class="text-center small" style="color:#aaa;">
-          © 2026 Royal Feast — Where Taste Meets Elegance
-        </div>
 
       </div>
     </footer>

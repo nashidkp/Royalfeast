@@ -5,113 +5,171 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Products</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-</head>
+  <style>
+    .parallax-footer {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url("./assets/images/parallex.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
 
-<body class="bg-dark text-light">
-  <!-- Floating WhatsApp Button -->
+    /* Remove Bootstrap blue completely from pills */
+    .nav-pills .nav-link {
+      color: #ffc107;
+      border: 1px solid #ffc107;
+      background-color: transparent;
+      border-radius: 999px;
+    }
+
+    .nav-pills .nav-link.active {
+      background-color: #ffc107 !important;
+      color: #000 !important;
+      border-color: #ffc107 !important;
+    }
+
+    .nav-pills .nav-link:hover {
+      background-color: #ffc107;
+      color: #000;
+    }
+  </style>
   <a href="https://api.whatsapp.com/send?phone=918590568859&text=Hello%20Royal%20Feast"
     class="btn btn-success position-fixed bottom-0 end-0 m-4 rounded-circle shadow d-flex align-items-center justify-content-center"
     style="width:65px;height:65px;z-index:1050;" target="_blank">
+
     <i class="bi bi-whatsapp text-white fs-3"></i>
+
   </a>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/style.css?v=4" rel="stylesheet">
+</head>
+
+<body id="home" class="bg-dark text-light">
   <!-- start navbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html#home">
-        <img src="./assets/images/foodoglogo.jpg" alt="..." width="70" height="60">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.html#about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.html#products">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.html#offers">Offers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact Us</a>
-          </li>
-        </ul>
-        <button class="btn btn-warning ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-          Login
+  <div class="navbar-wrapper">
+    <nav class="navbar navbar-expand-lg glass-navbar">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand me-3" href="index.html">
+          <img src="./assets/images/foodoglogo.jpg" alt="Logo" width="45" height="45" class="rounded-circle">
+        </a>
+
+        <!-- Toggler for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
-    </div>
-    </div>
-    <div class="modal fade" id="loginModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-light border border-warning">
 
-          <div class="modal-header border-warning">
-            <h5 class="modal-title text-warning">Login to Your Account</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-          </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Center Links -->
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#about">About Us</a></li>
+            <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#offers">Offers</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Us</a></li>
+          </ul>
 
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="Enter email">
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" placeholder="Enter password">
-              </div>
-
-              <button class="btn btn-warning w-100">Login</button>
-            </form>
-          </div>
-
-          <div class="modal-footer border-warning">
-            <small class="text-secondary">New user? Register here</small>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-
-    </div>
-    </div>
-    </div>
-    </div>
-  </nav>
-  <!-- end navbar  -->
-  <main class="container py-5">
-    <!-- Top creator/profile strip similar to reference -->
-    <section class="bg-body-tertiary rounded-4 p-4 p-md-5 mb-4 shadow-sm">
-      <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-4">
-        <div class="d-flex align-items-center gap-3">
-          <img src="./assets/images/foodoglogo.jpg" class="rounded-circle border border-warning" width="70" height="70"
-            alt="Royal Feast">
-          <div>
-            <h4 class="mb-1 text-warning">Royal Feast Menu</h4>
-            <p class="mb-0 small text-secondary">Curated dishes crafted by our chefs. Browse by mood, cuisine or diet.
-            </p>
+          <!-- Right-aligned Button -->
+          <div class="ms-3">
+            <button class="btn btn-login" data-bs-toggle="modal" data-bs-target="#authModal">
+              Login
+            </button>
           </div>
         </div>
-        <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-outline-warning rounded-pill js-open-favourites">
-            <i class="bi bi-bookmark-heart me-2"></i>Save Favourites
-          </button>
-          <a href="https://api.whatsapp.com/send?phone=918590568859&text=Hello%20Royal%20Feast" target="_blank"
-            class="btn btn-warning text-dark rounded-pill">
-            <i class="bi bi-telephone-outbound me-2"></i>Get in touch
-          </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Unified Authentication Modal (Redesigned) -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content auth-modal-content overflow-hidden">
+        <div class="row g-0">
+          <!-- Visual Panel -->
+          <div class="col-lg-6 d-none d-lg-block modal-split-visual"
+            style="background-image: url('./assets/images/royal_feast_login_bg.png');">
+            <div class="visual-overlay d-flex flex-column justify-content-end p-5">
+              <h2 class="display-5 fw-bold text-white mb-3 head-royal font-playfair">A Taste of Royalty</h2>
+              <p class="text-white-50 lead mb-0">Experience the finest gourmet delights, prepared with passion and
+                served with elegance.</p>
+            </div>
+          </div>
+
+          <!-- Form Panel -->
+          <div class="col-lg-6 modal-split-form p-4 p-md-5 bg-dark">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="navbar-brand d-flex align-items-center justify-content-center"
+                style="width: 60px; height: 60px;">
+                <img src="./assets/images/foodoglogo.jpg" alt="Logo" class="w-100 h-100 object-fit-cover">
+              </div>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+
+            <!-- Login View -->
+            <div id="loginView">
+              <h3 class="head-royal text-warning mb-2 font-playfair">Welcome Back</h3>
+              <p class="text-secondary mb-4">Please enter your details to sign in.</p>
+
+              <form>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Email Address</label>
+                  <input type="email" class="form-control premium-input" placeholder="name@example.com">
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label small text-uppercase fw-bold text-secondary">Password</label>
+                    <a href="#" class="small text-warning text-decoration-none">Forgot?</a>
+                  </div>
+                  <input type="password" class="form-control premium-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-warning w-100 py-3 fw-bold rounded-pill shadow-sm">Sign In</button>
+              </form>
+
+              <div class="mt-5 text-center">
+                <p class="text-secondary small">Don't have an account?
+                  <a href="javascript:void(0)" onclick="toggleAuthView('signup')"
+                    class="text-warning fw-bold text-decoration-none ms-1">Create an Account</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Signup View (Hidden by default) -->
+            <div id="signupView" style="display: none;">
+              <h3 class="head-royal text-warning mb-2 font-playfair">Join the Feast</h3>
+              <p class="text-secondary mb-4">Experience royalty in every bite.</p>
+
+              <form>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Full Name</label>
+                  <input type="text" class="form-control premium-input" placeholder="John Doe">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Email Address</label>
+                  <input type="email" class="form-control premium-input" placeholder="name@example.com">
+                </div>
+                <div class="mb-4">
+                  <label class="form-label small text-uppercase fw-bold text-secondary">Password</label>
+                  <input type="password" class="form-control premium-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-warning w-100 py-3 fw-bold rounded-pill shadow-sm">Sign Up</button>
+              </form>
+
+              <div class="mt-5 text-center">
+                <p class="text-secondary small">Already have an account?
+                  <a href="javascript:void(0)" onclick="toggleAuthView('login')"
+                    class="text-warning fw-bold text-decoration-none ms-1">Sign In</a>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -485,8 +543,30 @@
     </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function toggleAuthView(view) {
+        const loginView = document.getElementById('loginView');
+        const signupView = document.getElementById('signupView');
+        if (view === 'signup') {
+          loginView.style.display = 'none';
+          signupView.style.display = 'block';
+        } else {
+          loginView.style.display = 'block';
+          signupView.style.display = 'none';
+        }
+      }
+
+      // Navbar scroll transformation
+      window.onscroll = function () {
+        const navWrapper = document.querySelector('.navbar-wrapper');
+        if (window.pageYOffset > 50) {
+          navWrapper.classList.add('scrolled');
+        } else {
+          navWrapper.classList.remove('scrolled');
+        }
+      };
+    </script>
 </body>
 
 </html>
